@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="kuzminki-zhttp-demo"
+		module="kuzminki-zhttp-demo_2.13"
+		revision="0.9.0"
+		conf="scala-tool"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20220814100426"/>
+	<dependencies>
+		<module organisation="org.scala-lang" name="scala-compiler">
+			<revision name="2.13.8" status="release" pubdate="20220111000901" resolver="public" artresolver="public" homepage="https://www.scala-lang.org/" extra-info.apiURL="https://www.scala-lang.org/api/2.13.8/scala-compiler/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, optional, optional(default), master" position="0">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2338" time="383" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.13.8.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.13.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.8/scala-compiler-2.13.8.pom"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="scala-tool" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="0.9.0"/>
+				<artifacts>
+					<artifact name="scala-compiler" type="jar" ext="jar" status="successful" details="" size="12097183" time="27248" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.13.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.8/scala-compiler-2.13.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.jline" name="jline">
+			<revision name="3.21.0" status="release" pubdate="20211019122712" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<license name="The BSD License" url="https://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="successful" details="" size="17687" time="597" location="/Users/karimagnusson/.ivy2/cache/org.jline/jline/ivy-3.21.0.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/org.jline/jline/ivy-3.21.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/jline/jline/3.21.0/jline-3.21.0.pom"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="3.21.0" rev-constraint-default="3.21.0" rev-constraint-dynamic="3.21.0" callerrev="2.13.8"/>
+				<artifacts>
+					<artifact name="jline" type="jar" ext="jar" status="successful" details="" size="994664" time="12818" location="/Users/karimagnusson/.ivy2/cache/org.jline/jline/jars/jline-3.21.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/jline/jline/3.21.0/jline-3.21.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.java.dev.jna" name="jna">
+			<revision name="5.9.0" status="release" pubdate="20210823015159" resolver="public" artresolver="public" homepage="https://github.com/java-native-access/jna" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+				<license name="LGPL-2.1-or-later" url="https://www.gnu.org/licenses/old-licenses/lgpl-2.1"/>
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2029" time="384" location="/Users/karimagnusson/.ivy2/cache/net.java.dev.jna/jna/ivy-5.9.0.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/net.java.dev.jna/jna/ivy-5.9.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.9.0/jna-5.9.0.pom"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="5.9.0" rev-constraint-default="5.9.0" rev-constraint-dynamic="5.9.0" callerrev="2.13.8"/>
+				<artifacts>
+					<artifact name="jna" type="jar" ext="jar" status="successful" details="" size="1729586" time="12148" location="/Users/karimagnusson/.ivy2/cache/net.java.dev.jna/jna/jars/jna-5.9.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.9.0/jna-5.9.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.13.8" status="release" pubdate="20220111000241" resolver="public" artresolver="public" homepage="https://www.scala-lang.org/" extra-info.apiURL="https://www.scala-lang.org/api/2.13.8/scala-reflect/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="2">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1824" time="388" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.13.8.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.13.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.8/scala-reflect-2.13.8.pom"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.13.8"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="successful" details="" size="3772083" time="8647" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.13.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.8/scala-reflect-2.13.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.13.8" status="release" pubdate="20220111000228" resolver="public" artresolver="public" homepage="https://www.scala-lang.org/" extra-info.apiURL="https://www.scala-lang.org/api/2.13.8/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, optional, optional(default), compile(*), master" position="1">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1600" time="797" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-library/ivy-2.13.8.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-library/ivy-2.13.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.pom"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="scala-tool" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="0.9.0"/>
+				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.13.8"/>
+				<caller organisation="org.scala-lang" name="scala-reflect" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.13.8"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="successful" details="" size="6003601" time="57137" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.13.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

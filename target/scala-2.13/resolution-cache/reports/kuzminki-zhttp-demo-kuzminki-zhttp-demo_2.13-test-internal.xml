@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="kuzminki-zhttp-demo"
+		module="kuzminki-zhttp-demo_2.13"
+		revision="0.9.0"
+		conf="test-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20220814100426"/>
+	<dependencies>
+		<module organisation="com.typesafe.play" name="play-json_2.13">
+			<revision name="2.9.2" status="release" pubdate="20210105032054" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="25">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="5118" time="385" location="/Users/karimagnusson/.ivy2/cache/com.typesafe.play/play-json_2.13/ivy-2.9.2.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.typesafe.play/play-json_2.13/ivy-2.9.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.9.2/play-json_2.13-2.9.2.pom"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="2.9.2" rev-constraint-default="2.9.2" rev-constraint-dynamic="2.9.2" callerrev="0.9.0"/>
+				<artifacts>
+					<artifact name="play-json_2.13" type="jar" ext="jar" status="successful" details="" size="754863" time="3724" location="/Users/karimagnusson/.ivy2/cache/com.typesafe.play/play-json_2.13/jars/play-json_2.13-2.9.2.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.13/2.9.2/play-json_2.13-2.9.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
+			<revision name="2.10.5.1" status="release" pubdate="20201202094750" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="30">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="7166" time="392" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.10.5.1.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/ivy-2.10.5.1.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.5.1/jackson-databind-2.10.5.1.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.10.5.1" rev-constraint-default="2.10.5.1" rev-constraint-dynamic="2.10.5.1" callerrev="2.9.2"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<artifacts>
+					<artifact name="jackson-databind" type="bundle" ext="jar" status="successful" details="" size="1405163" time="16489" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.10.5.1.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.5.1/jackson-databind-2.10.5.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="2.10.5" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<evicted-by rev="2.10.5.1"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.10.5.1" rev-constraint-default="2.10.5.1" rev-constraint-dynamic="2.10.5.1" callerrev="2.9.2"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310">
+			<revision name="2.10.5" status="release" pubdate="20200721091059" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="31">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="4549" time="390" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.10.5.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/ivy-2.10.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.5/jackson-datatype-jsr310-2.10.5.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.9.2"/>
+				<artifacts>
+					<artifact name="jackson-datatype-jsr310" type="bundle" ext="jar" status="successful" details="" size="105901" time="3719" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.10.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.5/jackson-datatype-jsr310-2.10.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8">
+			<revision name="2.10.5" status="release" pubdate="20200721091053" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="29">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="2219" time="491" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.10.5.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/ivy-2.10.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.5/jackson-datatype-jdk8-2.10.5.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.9.2"/>
+				<artifacts>
+					<artifact name="jackson-datatype-jdk8" type="bundle" ext="jar" status="successful" details="" size="34400" time="1944" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.10.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.5/jackson-datatype-jdk8-2.10.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
+			<revision name="2.10.5" status="release" pubdate="20200721073344" resolver="public" artresolver="public" homepage="http://github.com/FasterXML/jackson" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="28">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="3437" time="1062" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.10.5.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/ivy-2.10.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.5/jackson-annotations-2.10.5.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.9.2"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5.1"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<artifacts>
+					<artifact name="jackson-annotations" type="bundle" ext="jar" status="successful" details="" size="68080" time="2451" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.10.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.5/jackson-annotations-2.10.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
+			<revision name="2.10.5" status="release" pubdate="20200721074242" resolver="public" artresolver="public" homepage="https://github.com/FasterXML/jackson-core" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="27">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="4640" time="388" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.10.5.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/ivy-2.10.5.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.5/jackson-core-2.10.5.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.9.2"/>
+				<caller organisation="com.fasterxml.jackson.core" name="jackson-databind" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5.1"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jsr310" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<caller organisation="com.fasterxml.jackson.datatype" name="jackson-datatype-jdk8" conf="compile, runtime" rev="2.10.5" rev-constraint-default="2.10.5" rev-constraint-dynamic="2.10.5" callerrev="2.10.5"/>
+				<artifacts>
+					<artifact name="jackson-core" type="bundle" ext="jar" status="successful" details="" size="349331" time="3868" location="/Users/karimagnusson/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.10.5.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.5/jackson-core-2.10.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.typesafe.play" name="play-functional_2.13">
+			<revision name="2.9.2" status="release" pubdate="20210105032123" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0.html"/>
+				<metadata-artifact status="successful" details="" size="2085" time="401" location="/Users/karimagnusson/.ivy2/cache/com.typesafe.play/play-functional_2.13/ivy-2.9.2.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/com.typesafe.play/play-functional_2.13/ivy-2.9.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.9.2/play-functional_2.13-2.9.2.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.9.2" rev-constraint-default="2.9.2" rev-constraint-dynamic="2.9.2" callerrev="2.9.2"/>
+				<artifacts>
+					<artifact name="play-functional_2.13" type="jar" ext="jar" status="successful" details="" size="186128" time="4164" location="/Users/karimagnusson/.ivy2/cache/com.typesafe.play/play-functional_2.13/jars/play-functional_2.13-2.9.2.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.9.2/play-functional_2.13-2.9.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.postgresql" name="postgresql">
+			<revision name="42.2.24" status="release" pubdate="20210923160429" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://jdbc.postgresql.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="23">
+				<license name="BSD-2-Clause" url="https://jdbc.postgresql.org/about/license.html"/>
+				<metadata-artifact status="no" details="" size="2790" time="0" location="/Users/karimagnusson/.ivy2/cache/org.postgresql/postgresql/ivy-42.2.24.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.24/postgresql-42.2.24.pom"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="42.2.24" rev-constraint-default="42.2.24" rev-constraint-dynamic="42.2.24" callerrev="0.9.0"/>
+				<artifacts>
+					<artifact name="postgresql" type="jar" ext="jar" status="no" details="" size="1006549" time="0" location="/Users/karimagnusson/.ivy2/cache/org.postgresql/postgresql/jars/postgresql-42.2.24.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.24/postgresql-42.2.24.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.checkerframework" name="checker-qual">
+			<revision name="3.5.0" status="release" pubdate="20200702020905" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://checkerframework.org" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="24">
+				<license name="The MIT License" url="http://opensource.org/licenses/MIT"/>
+				<metadata-artifact status="no" details="" size="2674" time="0" location="/Users/karimagnusson/.ivy2/cache/org.checkerframework/checker-qual/ivy-3.5.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.pom"/>
+				<caller organisation="org.postgresql" name="postgresql" conf="default, compile, runtime, master" rev="3.5.0" rev-constraint-default="3.5.0" rev-constraint-dynamic="3.5.0" callerrev="42.2.24"/>
+				<artifacts>
+					<artifact name="checker-qual" type="jar" ext="jar" status="no" details="" size="214381" time="0" location="/Users/karimagnusson/.ivy2/cache/org.checkerframework/checker-qual/jars/checker-qual-3.5.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.d11" name="zhttp_2.13">
+			<revision name="1.0.0.0-RC29" status="release" pubdate="20220602203651" resolver="public" artresolver="public" homepage="https://github.com/dream11/zio-http" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="4">
+				<license name="MIT License" url="https://github.com/dream11/zio-http/blob/master/LICENSE"/>
+				<metadata-artifact status="successful" details="" size="3493" time="483" location="/Users/karimagnusson/.ivy2/cache/io.d11/zhttp_2.13/ivy-1.0.0.0-RC29.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.d11/zhttp_2.13/ivy-1.0.0.0-RC29.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/d11/zhttp_2.13/1.0.0.0-RC29/zhttp_2.13-1.0.0.0-RC29.pom"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="1.0.0.0-RC29" rev-constraint-default="1.0.0.0-RC29" rev-constraint-dynamic="1.0.0.0-RC29" callerrev="0.9.0"/>
+				<artifacts>
+					<artifact name="zhttp_2.13" type="jar" ext="jar" status="successful" details="" size="1830379" time="38162" location="/Users/karimagnusson/.ivy2/cache/io.d11/zhttp_2.13/jars/zhttp_2.13-1.0.0.0-RC29.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/d11/zhttp_2.13/1.0.0.0-RC29/zhttp_2.13-1.0.0.0-RC29.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty.incubator" name="netty-incubator-transport-native-io_uring">
+			<revision name="0.0.14.Final" status="release" pubdate="20220510171307" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="21">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="16735" time="411" location="/Users/karimagnusson/.ivy2/cache/io.netty.incubator/netty-incubator-transport-native-io_uring/ivy-0.0.14.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty.incubator/netty-incubator-transport-native-io_uring/ivy-0.0.14.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/incubator/netty-incubator-transport-native-io_uring/0.0.14.Final/netty-incubator-transport-native-io_uring-0.0.14.Final.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="0.0.14.Final" rev-constraint-default="0.0.14.Final" rev-constraint-dynamic="0.0.14.Final" callerrev="1.0.0.0-RC29"/>
+				<artifacts>
+					<artifact name="netty-incubator-transport-native-io_uring" type="jar" ext="jar" extra-classifier="linux-x86_64" status="successful" details="" size="36251" time="1154" location="/Users/karimagnusson/.ivy2/cache/io.netty.incubator/netty-incubator-transport-native-io_uring/jars/netty-incubator-transport-native-io_uring-0.0.14.Final-linux-x86_64.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/incubator/netty-incubator-transport-native-io_uring/0.0.14.Final/netty-incubator-transport-native-io_uring-0.0.14.Final-linux-x86_64.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty.incubator" name="netty-incubator-transport-classes-io_uring">
+			<revision name="0.0.14.Final" status="release" pubdate="20220510171307" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="22">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2948" time="387" location="/Users/karimagnusson/.ivy2/cache/io.netty.incubator/netty-incubator-transport-classes-io_uring/ivy-0.0.14.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty.incubator/netty-incubator-transport-classes-io_uring/ivy-0.0.14.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/incubator/netty-incubator-transport-classes-io_uring/0.0.14.Final/netty-incubator-transport-classes-io_uring-0.0.14.Final.pom"/>
+				<caller organisation="io.netty.incubator" name="netty-incubator-transport-native-io_uring" conf="compile, runtime" rev="0.0.14.Final" rev-constraint-default="0.0.14.Final" rev-constraint-dynamic="0.0.14.Final" callerrev="0.0.14.Final"/>
+				<artifacts>
+					<artifact name="netty-incubator-transport-classes-io_uring" type="jar" ext="jar" status="successful" details="" size="99211" time="6625" location="/Users/karimagnusson/.ivy2/cache/io.netty.incubator/netty-incubator-transport-classes-io_uring/jars/netty-incubator-transport-classes-io_uring-0.0.14.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/incubator/netty-incubator-transport-classes-io_uring/0.0.14.Final/netty-incubator-transport-classes-io_uring-0.0.14.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="dev.zio" name="zio-streams_2.13">
+			<revision name="1.0.14" status="release" pubdate="20220413075824" resolver="public" artresolver="public" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="20">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2330" time="390" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-streams_2.13/ivy-1.0.14.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-streams_2.13/ivy-1.0.14.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/zio-streams_2.13/1.0.14/zio-streams_2.13-1.0.14.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="1.0.14" rev-constraint-default="1.0.14" rev-constraint-dynamic="1.0.14" callerrev="1.0.0.0-RC29"/>
+				<artifacts>
+					<artifact name="zio-streams_2.13" type="jar" ext="jar" status="successful" details="" size="621315" time="15127" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-streams_2.13/jars/zio-streams_2.13-1.0.14.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/dev/zio/zio-streams_2.13/1.0.14/zio-streams_2.13-1.0.14.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="dev.zio" name="zio_2.13">
+			<revision name="1.0.14" status="release" pubdate="20220413075826" resolver="public" artresolver="public" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master, default, default(compile)" position="18">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2493" time="628" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio_2.13/ivy-1.0.14.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio_2.13/ivy-1.0.14.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/zio_2.13/1.0.14/zio_2.13-1.0.14.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="1.0.14" rev-constraint-default="1.0.14" rev-constraint-dynamic="1.0.14" callerrev="1.0.0.0-RC29"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="1.0.12" rev-constraint-default="1.0.12" rev-constraint-dynamic="1.0.12" callerrev="0.9.0"/>
+				<caller organisation="dev.zio" name="zio-streams_2.13" conf="compile, runtime" rev="1.0.14" rev-constraint-default="1.0.14" rev-constraint-dynamic="1.0.14" callerrev="1.0.14"/>
+				<artifacts>
+					<artifact name="zio_2.13" type="jar" ext="jar" status="successful" details="" size="2866738" time="35398" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio_2.13/jars/zio_2.13-1.0.14.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/dev/zio/zio_2.13/1.0.14/zio_2.13-1.0.14.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.0.12" status="release" pubdate="20210921032349" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="-1">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2493" time="388" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio_2.13/ivy-1.0.12.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio_2.13/ivy-1.0.12.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/zio_2.13/1.0.12/zio_2.13-1.0.12.pom"/>
+				<evicted-by rev="1.0.14"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="1.0.12" rev-constraint-default="1.0.12" rev-constraint-dynamic="1.0.12" callerrev="0.9.0"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="dev.zio" name="zio-stacktracer_2.13">
+			<revision name="1.0.14" status="release" pubdate="20220413075825" resolver="public" artresolver="public" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2176" time="407" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-stacktracer_2.13/ivy-1.0.14.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-stacktracer_2.13/ivy-1.0.14.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/zio-stacktracer_2.13/1.0.14/zio-stacktracer_2.13-1.0.14.pom"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="default, compile, runtime, master" rev="1.0.12" rev-constraint-default="1.0.12" rev-constraint-dynamic="1.0.12" callerrev="1.0.12"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="compile, runtime" rev="1.0.14" rev-constraint-default="1.0.14" rev-constraint-dynamic="1.0.14" callerrev="1.0.14"/>
+				<artifacts>
+					<artifact name="zio-stacktracer_2.13" type="jar" ext="jar" status="successful" details="" size="47481" time="2024" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-stacktracer_2.13/jars/zio-stacktracer_2.13-1.0.14.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/dev/zio/zio-stacktracer_2.13/1.0.14/zio-stacktracer_2.13-1.0.14.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="1.0.12" status="release" pubdate="20210921032330" resolver="public" artresolver="public" evicted="latest-revision" evicted-reason="" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2176" time="435" location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-stacktracer_2.13/ivy-1.0.12.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/zio-stacktracer_2.13/ivy-1.0.12.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/zio-stacktracer_2.13/1.0.12/zio-stacktracer_2.13-1.0.12.pom"/>
+				<evicted-by rev="1.0.14"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="default, compile, runtime, master" rev="1.0.12" rev-constraint-default="1.0.12" rev-constraint-dynamic="1.0.12" callerrev="1.0.12"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-transport-native-kqueue">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134823" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="16">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="24691" time="462" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-kqueue/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-kqueue/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/4.1.77.Final/netty-transport-native-kqueue-4.1.77.Final.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="1.0.0.0-RC29"/>
+				<artifacts>
+					<artifact name="netty-transport-native-kqueue" type="jar" ext="jar" status="successful" details="" size="5510" time="1195" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-kqueue/jars/netty-transport-native-kqueue-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-transport-native-kqueue/4.1.77.Final/netty-transport-native-kqueue-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-transport-classes-kqueue">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134927" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="17">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2135" time="734" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-classes-kqueue/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-classes-kqueue/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-transport-classes-kqueue/4.1.77.Final/netty-transport-classes-kqueue-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-transport-native-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-transport-classes-kqueue" type="jar" ext="jar" status="successful" details="" size="107977" time="6635" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-classes-kqueue/jars/netty-transport-classes-kqueue-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-transport-classes-kqueue/4.1.77.Final/netty-transport-classes-kqueue-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-transport-native-epoll">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506131847" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="18991" time="506" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-epoll/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-epoll/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/4.1.77.Final/netty-transport-native-epoll-4.1.77.Final.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="1.0.0.0-RC29"/>
+				<artifacts>
+					<artifact name="netty-transport-native-epoll" type="jar" ext="jar" status="successful" details="" size="5594" time="564" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-epoll/jars/netty-transport-native-epoll-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/4.1.77.Final/netty-transport-native-epoll-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-transport-classes-epoll">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506131714" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="15">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2133" time="388" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-classes-epoll/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-classes-epoll/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-transport-classes-epoll/4.1.77.Final/netty-transport-classes-epoll-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-transport-native-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-transport-classes-epoll" type="jar" ext="jar" status="successful" details="" size="139612" time="4207" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-classes-epoll/jars/netty-transport-classes-epoll-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-transport-classes-epoll/4.1.77.Final/netty-transport-classes-epoll-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-transport-native-unix-common">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506135007" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="25774" time="433" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-unix-common/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-unix-common/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-transport-native-unix-common/4.1.77.Final/netty-transport-native-unix-common-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-transport-native-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty.incubator" name="netty-incubator-transport-classes-io_uring" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="0.0.14.Final"/>
+				<artifacts>
+					<artifact name="netty-transport-native-unix-common" type="jar" ext="jar" status="successful" details="" size="43213" time="4147" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport-native-unix-common/jars/netty-transport-native-unix-common-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-transport-native-unix-common/4.1.77.Final/netty-transport-native-unix-common-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-codec-http">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134848" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="6">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="3317" time="412" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-codec-http/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-codec-http/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-codec-http/4.1.77.Final/netty-codec-http-4.1.77.Final.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="1.0.0.0-RC29"/>
+				<artifacts>
+					<artifact name="netty-codec-http" type="jar" ext="jar" status="successful" details="" size="639452" time="4479" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-codec-http/jars/netty-codec-http-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-codec-http/4.1.77.Final/netty-codec-http-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-handler">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134942" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="12">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="3723" time="405" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-handler/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-handler/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-handler/4.1.77.Final/netty-handler-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-codec-http" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-handler" type="jar" ext="jar" status="successful" details="" size="528268" time="4790" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-handler/jars/netty-handler-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-handler/4.1.77.Final/netty-handler-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-codec">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134917" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="4407" time="410" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-codec/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-codec/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-handler" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec-http" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-codec" type="jar" ext="jar" status="successful" details="" size="337017" time="2800" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-codec/jars/netty-codec-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-codec/4.1.77.Final/netty-codec-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-transport">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506135002" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="9">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1926" time="422" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-transport/4.1.77.Final/netty-transport-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-transport-native-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-handler" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty.incubator" name="netty-incubator-transport-classes-io_uring" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="0.0.14.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-unix-common" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec-http" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-transport" type="jar" ext="jar" status="successful" details="" size="480832" time="1056" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-transport/jars/netty-transport-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-transport/4.1.77.Final/netty-transport-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-resolver">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506135003" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="10">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1587" time="389" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-resolver/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-resolver/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-resolver/4.1.77.Final/netty-resolver-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-handler" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-resolver" type="jar" ext="jar" status="successful" details="" size="37776" time="3174" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-resolver/jars/netty-resolver-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-resolver/4.1.77.Final/netty-resolver-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-buffer">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134844" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="8">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1580" time="3777" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-buffer/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-buffer/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-buffer/4.1.77.Final/netty-buffer-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-transport-native-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-handler" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty.incubator" name="netty-incubator-transport-classes-io_uring" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="0.0.14.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-unix-common" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec-http" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-buffer" type="jar" ext="jar" status="successful" details="" size="303738" time="810" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-buffer/jars/netty-buffer-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-buffer/4.1.77.Final/netty-buffer-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty-common">
+			<revision name="4.1.77.Final" status="release" pubdate="20220506134855" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+				<license name="Apache License, Version 2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="12692" time="440" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-common/ivy-4.1.77.Final.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-common/ivy-4.1.77.Final.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/netty/netty-common/4.1.77.Final/netty-common-4.1.77.Final.pom"/>
+				<caller organisation="io.netty" name="netty-buffer" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-kqueue" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-resolver" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-handler" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport-classes-epoll" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty.incubator" name="netty-incubator-transport-classes-io_uring" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="0.0.14.Final"/>
+				<caller organisation="io.netty" name="netty-transport-native-unix-common" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec-http" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-codec" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<caller organisation="io.netty" name="netty-transport" conf="compile, runtime" rev="4.1.77.Final" rev-constraint-default="4.1.77.Final" rev-constraint-dynamic="4.1.77.Final" callerrev="4.1.77.Final"/>
+				<artifacts>
+					<artifact name="netty-common" type="jar" ext="jar" status="successful" details="" size="653053" time="19078" location="/Users/karimagnusson/.ivy2/cache/io.netty/netty-common/jars/netty-common-4.1.77.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty-common/4.1.77.Final/netty-common-4.1.77.Final.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.d11" name="zhttp-logging_2.13">
+			<revision name="1.0.0.0-RC29" status="release" pubdate="20220602203652" resolver="public" artresolver="public" homepage="https://github.com/dream11/zio-http" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="5">
+				<license name="MIT License" url="https://github.com/dream11/zio-http/blob/master/LICENSE"/>
+				<metadata-artifact status="successful" details="" size="2376" time="514" location="/Users/karimagnusson/.ivy2/cache/io.d11/zhttp-logging_2.13/ivy-1.0.0.0-RC29.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/io.d11/zhttp-logging_2.13/ivy-1.0.0.0-RC29.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/io/d11/zhttp-logging_2.13/1.0.0.0-RC29/zhttp-logging_2.13-1.0.0.0-RC29.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="1.0.0.0-RC29" rev-constraint-default="1.0.0.0-RC29" rev-constraint-dynamic="1.0.0.0-RC29" callerrev="1.0.0.0-RC29"/>
+				<artifacts>
+					<artifact name="zhttp-logging_2.13" type="jar" ext="jar" status="successful" details="" size="135876" time="6280" location="/Users/karimagnusson/.ivy2/cache/io.d11/zhttp-logging_2.13/jars/zhttp-logging_2.13-1.0.0.0-RC29.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/d11/zhttp-logging_2.13/1.0.0.0-RC29/zhttp-logging_2.13-1.0.0.0-RC29.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="dev.zio" name="izumi-reflect_2.13">
+			<revision name="1.1.3" status="release" pubdate="20210806030216" resolver="public" artresolver="public" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="2">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2283" time="392" location="/Users/karimagnusson/.ivy2/cache/dev.zio/izumi-reflect_2.13/ivy-1.1.3.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/izumi-reflect_2.13/ivy-1.1.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/izumi-reflect_2.13/1.1.3/izumi-reflect_2.13-1.1.3.pom"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="default, compile, runtime, master" rev="1.1.3" rev-constraint-default="1.1.3" rev-constraint-dynamic="1.1.3" callerrev="1.0.12"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="compile, runtime" rev="1.1.3" rev-constraint-default="1.1.3" rev-constraint-dynamic="1.1.3" callerrev="1.0.14"/>
+				<artifacts>
+					<artifact name="izumi-reflect_2.13" type="jar" ext="jar" status="successful" details="" size="487827" time="2756" location="/Users/karimagnusson/.ivy2/cache/dev.zio/izumi-reflect_2.13/jars/izumi-reflect_2.13-1.1.3.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/dev/zio/izumi-reflect_2.13/1.1.3/izumi-reflect_2.13-1.1.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="dev.zio" name="izumi-reflect-thirdparty-boopickle-shaded_2.13">
+			<revision name="1.1.3" status="release" pubdate="20210806030218" resolver="public" artresolver="public" homepage="https://zio.dev" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
+				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="2164" time="389" location="/Users/karimagnusson/.ivy2/cache/dev.zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/ivy-1.1.3.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/dev.zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/ivy-1.1.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/dev/zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/1.1.3/izumi-reflect-thirdparty-boopickle-shaded_2.13-1.1.3.pom"/>
+				<caller organisation="dev.zio" name="izumi-reflect_2.13" conf="compile, runtime" rev="1.1.3" rev-constraint-default="1.1.3" rev-constraint-dynamic="1.1.3" callerrev="1.1.3"/>
+				<artifacts>
+					<artifact name="izumi-reflect-thirdparty-boopickle-shaded_2.13" type="jar" ext="jar" status="successful" details="" size="94929" time="2378" location="/Users/karimagnusson/.ivy2/cache/dev.zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/jars/izumi-reflect-thirdparty-boopickle-shaded_2.13-1.1.3.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/dev/zio/izumi-reflect-thirdparty-boopickle-shaded_2.13/1.1.3/izumi-reflect-thirdparty-boopickle-shaded_2.13-1.1.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.13.8" status="release" pubdate="20220111000241" resolver="public" artresolver="public" homepage="https://www.scala-lang.org/" extra-info.apiURL="https://www.scala-lang.org/api/2.13.8/scala-reflect/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1824" time="388" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.13.8.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-reflect/ivy-2.13.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.8/scala-reflect-2.13.8.pom"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.9.2"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="0.9.0"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="successful" details="" size="3772083" time="8647" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.13.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.8/scala-reflect-2.13.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.13.8" status="release" pubdate="20220111000228" resolver="public" artresolver="public" homepage="https://www.scala-lang.org/" extra-info.apiURL="https://www.scala-lang.org/api/2.13.8/" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="0">
+				<license name="Apache-2.0" url="https://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="successful" details="" size="1600" time="797" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-library/ivy-2.13.8.xml" searched="true" original-local-location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-library/ivy-2.13.8.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.pom"/>
+				<caller organisation="io.d11" name="zhttp_2.13" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.0.0-RC29"/>
+				<caller organisation="com.typesafe.play" name="play-json_2.13" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.9.2"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.12"/>
+				<caller organisation="dev.zio" name="zio-stacktracer_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.14"/>
+				<caller organisation="dev.zio" name="izumi-reflect_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.1.3"/>
+				<caller organisation="dev.zio" name="zio_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.14"/>
+				<caller organisation="io.d11" name="zhttp-logging_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.0.0-RC29"/>
+				<caller organisation="dev.zio" name="zio-streams_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.14"/>
+				<caller organisation="com.typesafe.play" name="play-functional_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.9.2"/>
+				<caller organisation="kuzminki-zhttp-demo" name="kuzminki-zhttp-demo_2.13" conf="test, compile, provided, test-internal, runtime, optional" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="0.9.0"/>
+				<caller organisation="dev.zio" name="zio-stacktracer_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.0.12"/>
+				<caller organisation="dev.zio" name="izumi-reflect-thirdparty-boopickle-shaded_2.13" conf="compile, runtime" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="1.1.3"/>
+				<caller organisation="org.scala-lang" name="scala-reflect" conf="default, compile, runtime, master" rev="2.13.8" rev-constraint-default="2.13.8" rev-constraint-dynamic="2.13.8" callerrev="2.13.8"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="successful" details="" size="6003601" time="57137" location="/Users/karimagnusson/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.13.8.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.8/scala-library-2.13.8.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
