@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
       "org.scala-lang" % "scala-reflect" % "2.13.8",
       "dev.zio" %% "zio" % "1.0.12",
       "io.d11" %% "zhttp" % "1.0.0.0-RC29",
-      "org.postgresql" % "postgresql" % "42.2.24",
+      "io.github.karimagnusson" % "kuzminki-zio" % "0.9.4-RC1",
       "com.typesafe.play" %% "play-json" % "2.9.2"
     )
   )

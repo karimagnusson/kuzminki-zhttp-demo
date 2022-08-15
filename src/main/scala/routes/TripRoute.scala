@@ -1,16 +1,13 @@
-package service
+package routes
 
-import zhttp.http._
-import zhttp.service.Server
 import zio._
+import zhttp.http._
 import play.api.libs.json._
 import models.worlddb._
-import models.PlayJsonLoader
 import kuzminki.api._
-import kuzminki.fn._
 
 
-object TripService extends ServiceCommon {
+object TripRoute extends Routes {
 
   val trip = Model.get[Trip]
   val city = Model.get[City]
@@ -19,22 +16,20 @@ object TripService extends ServiceCommon {
     
     case Method.GET -> !! / "trip" / "list" =>
       sql
-      .select(trip, city)
-      .colsNamed(t => Seq(
-        t.a.id,
-        t.a.price,
-        t.b.name,
-        t.b.countryCode
-      ))
-      .joinOn(_.cityId, _.id)
-      .all
-      .runAs[JsValue]
-      .map(JsArray(_))
-      .map(Response.json(_))
+        .select(trip, city)
+        .colsNamed(t => Seq(
+          t.a.id,
+          t.a.price,
+          t.b.name,
+          t.b.countryCode
+        ))
+        .joinOn(_.cityId, _.id)
+        .all
+        .runAs[JsValue]
+        .map(jsonList(_))
 
-    case req @ Method.POST -> !! / "trip" / "add" =>
+    case req @ Method.POST -> !! / "trip" / "add" => withBody(req) { obj =>
 
-      val obj = Json.parse(req.body.toString)
       val cityId = (obj \ "city_id").as[Int]
       val price = (obj \ "price").as[Int]
 
@@ -50,11 +45,11 @@ object TripService extends ServiceCommon {
           t.price
         ))
         .runHeadAs[JsValue]((cityId, price))
-        .map(Response.json(_))
+        .map(jsonObj(_))
+    }
 
-    case req @ Method.PATCH -> !! / "trip" / "update" =>
+    case req @ Method.PATCH -> !! / "trip" / "update" => withBody(req) { obj =>
 
-      val obj = Json.parse(req.body.toString)
       val id = (obj \ "id").as[Int]
       val price = (obj \ "price").as[Int]
 
@@ -68,20 +63,18 @@ object TripService extends ServiceCommon {
           t.price
         ))
         .runHeadOptAs[JsValue]
-        .map {
-          case Some(data) => Response.json(data)
-          case None => Response.json(notFound)
-        }
+        .map(jsonOpt(_))
+    }
 
-    case req @ Method.DELETE -> !! / "trip" / "delete" =>
+    case req @ Method.DELETE -> !! / "trip" / "delete" => withBody(req) { obj =>
 
-      val obj = Json.parse(req.body.toString)
       val id = (obj \ "id").as[Int]
 
       sql
         .delete(trip)
         .where(_.id === id)
         .runNum
-        .map(num => Response.json(Json.obj("deleted" -> num)))
+        .map(num => jsonObj(Json.obj("deleted" -> num)))
+    }
   }
 }
