@@ -9,6 +9,7 @@
 .cache-main
 .scala_dependencies
 publish.sbt
+lib/
 target/
 generated/
 project/project/
