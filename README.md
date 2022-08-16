@@ -1,6 +1,6 @@
 # kuzminki-zhttp-demo
 
-kuzminki-zhttp-demo is an example of a REST API using [kuzminki-zio](https://github.com/karimagnusson/kuzminki-zio) and [zio-http](https://github.com/dream11/zio-http).
+kuzminki-zhttp-demo is an example REST API using [kuzminki-zio](https://github.com/karimagnusson/kuzminki-zio) and [zio-http](https://github.com/dream11/zio-http).
 
 #### Database
 
