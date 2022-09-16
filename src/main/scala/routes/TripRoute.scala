@@ -39,12 +39,13 @@ object TripRoute extends Routes {
           t.cityId,
           t.price
         ))
+        .values((cityId, price))
         .returningNamed(t => Seq(
           t.id,
           t.cityId,
           t.price
         ))
-        .runHeadAs[JsValue]((cityId, price))
+        .runHeadAs[JsValue]
         .map(jsonObj(_))
     }
 

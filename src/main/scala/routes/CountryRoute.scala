@@ -86,7 +86,7 @@ object CountryRoute extends Routes {
           t.region,
           t.population
         ))
-        .whereOpts(t => Seq(
+        .whereOpt(t => Seq(
           t.continent === params.get("continent"),
           t.region === params.get("region"),
           t.population > params.get("population_gt").map(_.toInt),
@@ -133,9 +133,9 @@ object CountryRoute extends Routes {
         .select(country)
         .colsNamed(t => Seq(
           "count" -> Count.all,
-          "avg" -> Avg.int(t.population),
-          "max" -> Max.int(t.population),
-          "min" -> Min.int(t.population)
+          "avg" -> Agg.avg(t.population),
+          "max" -> Agg.max(t.population),
+          "min" -> Agg.min(t.population)
         ))
         .where(_.continent === continent)
         .runHeadAs[JsValue]
