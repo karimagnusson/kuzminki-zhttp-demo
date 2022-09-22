@@ -1,5 +1,6 @@
 package models
 
+import java.sql.Timestamp
 import play.api.libs.json._
 import kuzminki.api._
 
@@ -39,7 +40,7 @@ object worlddb {
     val localName = column[String]("localname")
     val governmentForm = column[String]("governmentform")
     val headOfState = column[String]("headofstate")
-    val capital = column[String]("capital")
+    val capital = column[Int]("capital")
     val code2 = column[String]("code2")
 
     val slim = read[CountrySlim](code, name, continent, region)
@@ -54,6 +55,27 @@ object worlddb {
   }
 
   Model.register[Trip]
+
+  // coins
+
+  class CoinPrice extends Model("coin_price") {
+    val coin = column[String]("coin")
+    val price = column[BigDecimal]("price")
+    val created = column[Timestamp]("created")
+  }
+
+  Model.register[CoinPrice]
+
+  // jsonb
+
+  class CountryData extends Model("country_data") {
+    val id = column[Int]("id")
+    val code = column[String]("code")
+    val langs = column[Seq[String]]("langs")
+    val data = column[Jsonb]("data")
+  }
+
+  Model.register[CountryData]
 }
 
 

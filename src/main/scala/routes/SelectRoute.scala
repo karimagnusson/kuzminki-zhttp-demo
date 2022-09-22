@@ -8,22 +8,14 @@ import kuzminki.api._
 import kuzminki.fn._
 
 
-object CountryRoute extends Routes {
+object SelectRoute extends Routes {
 
   val city = Model.get[City]
   val country = Model.get[Country]
 
   val routes = Http.collectZIO[Request] {
-    
-    case Method.GET -> !! / "country" / "result1" / code =>
-      sql
-        .select(country)
-        .colsType(_.slim)
-        .where(_.code === code.toUpperCase)
-        .runHeadOptAs(Json.toJson(_))
-        .map(jsonOpt(_))
 
-    case Method.GET -> !! / "country" / "result2" / code =>
+    case Method.GET -> !! / "select" / "country" / code =>
       sql
         .select(country)
         .colsNamed(t => Seq(
@@ -35,29 +27,16 @@ object CountryRoute extends Routes {
         .where(_.code === code.toUpperCase)
         .runHeadOptAs[JsValue]
         .map(jsonOpt(_))
-
-    case Method.GET -> !! / "country" / "result3" / code =>
+    
+    case Method.GET -> !! / "select" / "country-type" / code =>
       sql
         .select(country)
-        .cols4(t => (
-          t.code,
-          t.name,
-          t.continent,
-          t.region
-        ))
+        .colsType(_.slim)
         .where(_.code === code.toUpperCase)
-        .runHeadOptAs {
-          case (code, name, continent, region) =>
-            Json.obj(
-              "code" -> code,
-              "name" -> name,
-              "continent" -> continent,
-              "region" -> region
-            )
-        }
+        .runHeadOptAs(Json.toJson(_))
         .map(jsonOpt(_))
 
-    case Method.GET -> !! / "top" / "cities" / code =>
+    case Method.GET -> !! / "select" / "cities" / code =>
       sql
         .select(city, country)
         .colsNamed(t => Seq(
@@ -71,12 +50,14 @@ object CountryRoute extends Routes {
         .joinOn(_.countryCode, _.code)
         .where(_.b.code === code.toUpperCase)
         .orderBy(_.a.population.desc)
-        .limit(10)
+        .limit(5)
         .runAs[JsValue]
         .map(jsonList(_))
 
-    case req @ Method.GET -> !! / "country" / "optional" =>
+    case req @ Method.GET -> !! / "select" / "optional" =>
+      
       val params = req.url.queryParams.map(p => p._1 -> p._2(0))
+      
       sql
         .select(country)
         .colsNamed(t => Seq(
@@ -87,17 +68,17 @@ object CountryRoute extends Routes {
           t.population
         ))
         .whereOpt(t => Seq(
-          t.continent === params.get("continent"),
+          t.continent === params.get("cont"),
           t.region === params.get("region"),
-          t.population > params.get("population_gt").map(_.toInt),
-          t.population < params.get("population_lt").map(_.toInt)
+          t.population > params.get("pop_gt").map(_.toInt),
+          t.population < params.get("pop_lt").map(_.toInt)
         ))
         .orderBy(_.name.asc)
         .limit(10)
         .runAs[JsValue]
         .map(jsonList(_))
 
-    case Method.GET -> !! / "country" / "andor" / continent =>
+    case Method.GET -> !! / "select" / "and-or" / cont =>
       sql
         .select(country)
         .colsNamed(t => Seq(
@@ -111,7 +92,7 @@ object CountryRoute extends Routes {
           t.gnp
         ))
         .where(t => Seq(
-          t.continent === continent,
+          t.continent === cont,
           Or(
             And(
               t.population > 20000000,
@@ -128,7 +109,7 @@ object CountryRoute extends Routes {
         .runAs[JsValue]
         .map(jsonList(_))
 
-    case Method.GET -> !! / "continent" / "population" / continent =>
+    case Method.GET -> !! / "select" / "population" / cont =>
       sql
         .select(country)
         .colsNamed(t => Seq(
@@ -137,7 +118,7 @@ object CountryRoute extends Routes {
           "max" -> Agg.max(t.population),
           "min" -> Agg.min(t.population)
         ))
-        .where(_.continent === continent)
+        .where(_.continent === cont)
         .runHeadAs[JsValue]
         .map(jsonObj(_))
         

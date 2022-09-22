@@ -7,28 +7,14 @@ import models.worlddb._
 import kuzminki.api._
 
 
-object TripRoute extends Routes {
+object OperationRoute extends Routes {
 
   val trip = Model.get[Trip]
   val city = Model.get[City]
 
   val routes = Http.collectZIO[Request] {
-    
-    case Method.GET -> !! / "trip" / "list" =>
-      sql
-        .select(trip, city)
-        .colsNamed(t => Seq(
-          t.a.id,
-          t.a.price,
-          t.b.name,
-          t.b.countryCode
-        ))
-        .joinOn(_.cityId, _.id)
-        .all
-        .runAs[JsValue]
-        .map(jsonList(_))
 
-    case req @ Method.POST -> !! / "trip" / "add" => withBody(req) { obj =>
+    case req @ Method.POST -> !! / "insert" / "trip" => withBody(req) { obj =>
 
       val cityId = (obj \ "city_id").as[Int]
       val price = (obj \ "price").as[Int]
@@ -49,7 +35,7 @@ object TripRoute extends Routes {
         .map(jsonObj(_))
     }
 
-    case req @ Method.PATCH -> !! / "trip" / "update" => withBody(req) { obj =>
+    case req @ Method.PATCH -> !! / "update" / "trip" => withBody(req) { obj =>
 
       val id = (obj \ "id").as[Int]
       val price = (obj \ "price").as[Int]
@@ -67,15 +53,20 @@ object TripRoute extends Routes {
         .map(jsonOpt(_))
     }
 
-    case req @ Method.DELETE -> !! / "trip" / "delete" => withBody(req) { obj =>
+    case req @ Method.DELETE -> !! / "delete" / "trip" => withBody(req) { obj =>
 
       val id = (obj \ "id").as[Int]
 
       sql
         .delete(trip)
         .where(_.id === id)
-        .runNum
-        .map(num => jsonObj(Json.obj("deleted" -> num)))
+        .returningNamed(t => Seq(
+          t.id,
+          t.cityId,
+          t.price
+        ))
+        .runHeadOptAs[JsValue]
+        .map(jsonOpt(_))
     }
   }
 }

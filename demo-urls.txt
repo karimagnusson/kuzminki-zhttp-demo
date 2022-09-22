@@ -1,0 +1,44 @@
+
+GET http://localhost:9000/select/country/ind
+
+GET http://localhost:9000/select/country-type/ind
+
+GET http://localhost:9000/select/cities/ind
+
+GET http://localhost:9000/select/optional?cont=Asia&pop_gt=10000000&pop_lt=100000000
+
+GET http://localhost:9000/select/and-or/Asia
+
+GET http://localhost:9000/select/population/Asia
+
+POST http://localhost:9000/insert/trip {"city_id": 1466, "price": 1000}
+
+PATCH http://localhost:9000/update/trip {"id": 6, "price": 1500}
+
+DELETE http://localhost:9000/delete/trip {"id": 6}
+
+GET http://localhost:9000/cache/select/country/ind
+
+GET http://localhost:9000/cache/join/10000000/140000
+
+POST http://localhost:9000/cache/insert/trip {"city_id": 1466, "price": 1000}
+
+PATCH http://localhost:9000/cache/update/trip {"id": 7, "price": 1500}
+
+DELETE http://localhost:9000/cache/delete/trip {"id": 7}
+
+GET http://localhost:9000/stream/export/btcusdt
+
+POST http://localhost:9000/stream/import file: /csv/eth-price.csv
+
+GET http://localhost:9000/jsonb/country/ind
+
+GET http://localhost:9000/jsonb/capital/Paris
+
+GET http://localhost:9000/jsonb/city/population
+
+GET http://localhost:9000/jsonb/capital-avg/Asia
+
+PATCH http://localhost:9000/jsonb/add/phone {"phone": "+91", "code": "IND"}
+
+PATCH http://localhost:9000/jsonb/del/phone {"code": "IND"}

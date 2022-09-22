@@ -1,15 +1,25 @@
 package routes
 
 import zio._
-import zio.blocking.Blocking
+import zio.stream.ZStream
 import zhttp.http._
 import play.api.libs.json._
 import models.worlddb._
 import models.PlayJsonLoader
+import kuzminki.api.Jsonb
 
 
 object Routes {
-  val app = (CountryRoute.routes ++ TripRoute.routes).catchAll { ex =>
+
+  private val routes = SelectRoute.routes ++
+                       OperationRoute.routes ++
+                       CacheRoute.routes ++
+                       StreamRoute.routes ++
+                       JsonbRoute.routes ++
+                       ArrayRoute.routes
+
+  val app = (routes).catchAll { ex =>
+    println(ex.getClass.getName)
     Http.apply(
       Response.json(
         Json.obj("error" -> ex.getMessage).toString
@@ -21,14 +31,16 @@ object Routes {
 
 trait Routes {
 
+  implicit val loadJsonb: Jsonb => JsValue = jsonb => Json.parse(jsonb.value)
+
   implicit val loadJson: Seq[Tuple2[String, Any]] => JsValue = { data =>
     PlayJsonLoader.load(data)
   }
 
   def withBody[R](req: Request)(fn: JsValue => RIO[R, Response]): RIO[R, Response] = {
     for {
-      body <- req.bodyAsString
-      obj  <- Task.effect(Json.parse(body))
+      body <- req.body.asString
+      obj  <- ZIO.attempt(Json.parse(body))
       rsp  <- fn(obj)
     } yield rsp
   }
@@ -47,4 +59,12 @@ trait Routes {
   val jsonList: List[JsValue] => Response = { list =>
     Response.json(Json.stringify(JsArray(list)))
   }
+
+  val jsonOk: Unit => Response = _ => jsonObj(Json.obj("ok" -> true))
 }
+
+
+
+
+
+

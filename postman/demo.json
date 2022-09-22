@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "db325124-d493-462f-b1c4-4260609858a3",
+		"name": "Kuzminki ZHttp Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6791813"
+	},
+	"item": [
+		{
+			"name": "/select/country/:code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/country/ind",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"country",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/country-type/:code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/country-type/ind",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"country-type",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/cities/:code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/cities/ind",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"cities",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/optional",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/optional?cont=Asia&pop_gt=10000000&pop_lt=100000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"optional"
+					],
+					"query": [
+						{
+							"key": "cont",
+							"value": "Asia"
+						},
+						{
+							"key": "pop_gt",
+							"value": "10000000"
+						},
+						{
+							"key": "pop_lt",
+							"value": "100000000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/and-or/:cont",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/and-or/Asia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"and-or",
+						"Asia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/population/:cont",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/population/Asia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"population",
+						"Asia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/insert/trip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"city_id\": 1466,\n\t\"price\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/insert/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"insert",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/update/trip",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 6,\n\t\"price\": 1500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/update/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"update",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/delete/trip",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 6}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/delete/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"delete",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cache/select/country/:code",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/cache/select/country/ind",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"cache",
+						"select",
+						"country",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cache/join/:pop/:gnp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/cache/join/10000000/140000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"cache",
+						"join",
+						"10000000",
+						"140000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cache/insert/trip",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"city_id\": 1466,\n\t\"price\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/cache/insert/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"cache",
+						"insert",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cache/update/trip",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 7,\n\t\"price\": 1500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/cache/update/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"cache",
+						"update",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cache/delete/trip",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 7}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/cache/delete/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"cache",
+						"delete",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/stream/export/:coin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/stream/export/btcusdt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"stream",
+						"export",
+						"btcusdt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/stream/import",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/Users/karimagnusson/Jobs/Kuzminki/kuzminki-zhttp-demo/csv/eth-price.csv"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/stream/import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"stream",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jsonb/country/:code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/jsonb/country/ind",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"jsonb",
+						"country",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jsonb/capital/:name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/jsonb/capital/Paris",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"jsonb",
+						"capital",
+						"Paris"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jsonb/city/population",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/jsonb/city/population",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"jsonb",
+						"city",
+						"population"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jsonb/capital-avg:cont",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/jsonb/capital-avg/Asia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"jsonb",
+						"capital-avg",
+						"Asia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jsonb/add/phone",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"+91\",\n    \"code\": \"IND\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/jsonb/add/phone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"jsonb",
+						"add",
+						"phone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/jsonb/del/phone",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"IND\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/jsonb/del/phone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"jsonb",
+						"del",
+						"phone"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

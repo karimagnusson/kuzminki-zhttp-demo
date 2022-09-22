@@ -1,8 +1,10 @@
 package models
 
+import java.util.UUID
 import java.sql.Time
 import java.sql.Date
 import java.sql.Timestamp
+import kuzminki.api.Jsonb
 import play.api.libs.json._
 
 
@@ -20,8 +22,11 @@ object PlayJsonLoader {
     case v: Time        => Json.toJson(v)
     case v: Date        => Json.toJson(v)
     case v: Timestamp   => Json.toJson(v)
+    case v: UUID        => JsString(v.toString)
+    case v: Jsonb       => Json.parse(v.value)
     case v: Option[_]   => v.map(toJsValue).getOrElse(JsNull)
     case v: Seq[_]      => JsArray(v.map(toJsValue))
+    case v: JsValue     => v
     case _              => throw new Exception("Cannot convert to JsValue")
   }
 
