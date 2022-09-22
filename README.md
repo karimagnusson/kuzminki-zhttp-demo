@@ -2,7 +2,14 @@
 
 kuzminki-zhttp-demo is an example REST API using [kuzminki-zio-2](https://github.com/karimagnusson/kuzminki-zio-2) and [zio-http](https://github.com/dream11/zio-http).
 
-This demo uses ZIO 2 and zhttp-2.0.0-RC11. It adds examples for jsonb field, array field and streaming.
+This demo uses ZIO 2 and zhttp-2.0.0-RC11.
+
+Examples:
+- Select, insert, update, delete
+- Cached queries
+- Jsonb field
+- Array field
+- Streaming
 
 #### Database
 
