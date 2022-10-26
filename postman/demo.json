@@ -28,27 +28,6 @@
 			"response": []
 		},
 		{
-			"name": "/select/country-type/:code",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:9000/select/country-type/ind",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"select",
-						"country-type",
-						"ind"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "/select/cities/:code",
 			"request": {
 				"method": "GET",
@@ -64,6 +43,48 @@
 						"select",
 						"cities",
 						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/language/:code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/language/FRA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"language",
+						"FRA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/select/country-cities/:code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/select/country-cities/FRA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"select",
+						"country-cities",
+						"FRA"
 					]
 				}
 			},

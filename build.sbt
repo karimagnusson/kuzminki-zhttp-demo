@@ -17,8 +17,7 @@ lazy val root = (project in file("."))
       //"org.postgresql" % "postgresql" % "42.2.24",
       "dev.zio" %% "zio" % "2.0.0",
       "io.d11" %% "zhttp" % "2.0.0-RC11",
-      "io.github.karimagnusson" % "kuzminki-zio-2" % "0.9.4-RC3",
-      "com.typesafe.play" %% "play-json" % "2.9.2"
+      "io.github.karimagnusson" % "kuzminki-zio-2" % "0.9.4-RC4",
     )
   )
 

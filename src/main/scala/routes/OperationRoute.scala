@@ -2,8 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import play.api.libs.json._
-import models.worlddb._
+import models.world._
 import kuzminki.api._
 
 
@@ -14,58 +13,50 @@ object OperationRoute extends Routes {
 
   val routes = Http.collectZIO[Request] {
 
-    case req @ Method.POST -> !! / "insert" / "trip" => withBody(req) { obj =>
-
-      val cityId = (obj \ "city_id").as[Int]
-      val price = (obj \ "price").as[Int]
-
+    case req @ Method.POST -> !! / "insert" / "trip" => withParams(req) { m =>
       sql
         .insert(trip)
         .cols2(t => (
           t.cityId,
           t.price
         ))
-        .values((cityId, price))
-        .returningNamed(t => Seq(
+        .values((
+          m("city_id").toInt,
+          m("price").toInt
+        ))
+        .returningJson(t => Seq(
           t.id,
           t.cityId,
           t.price
         ))
-        .runHeadAs[JsValue]
+        .runHead
         .map(jsonObj(_))
     }
 
-    case req @ Method.PATCH -> !! / "update" / "trip" => withBody(req) { obj =>
-
-      val id = (obj \ "id").as[Int]
-      val price = (obj \ "price").as[Int]
-
+    case req @ Method.PATCH -> !! / "update" / "trip" => withParams(req) { m =>
       sql
         .update(trip)
-        .set(_.price ==> price)
-        .where(_.id === id)
-        .returningNamed(t => Seq(
+        .set(_.price ==> m("price").toInt)
+        .where(_.id === m("id").toInt)
+        .returningJson(t => Seq(
           t.id,
           t.cityId,
           t.price
         ))
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
     }
 
-    case req @ Method.DELETE -> !! / "delete" / "trip" => withBody(req) { obj =>
-
-      val id = (obj \ "id").as[Int]
-
+    case req @ Method.DELETE -> !! / "delete" / "trip" => withParams(req) { m =>
       sql
         .delete(trip)
-        .where(_.id === id)
-        .returningNamed(t => Seq(
+        .where(_.id === m("id").toInt)
+        .returningJson(t => Seq(
           t.id,
           t.cityId,
           t.price
         ))
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
     }
   }

@@ -2,59 +2,51 @@ package routes
 
 import zio._
 import zhttp.http._
-import play.api.libs.json._
-import models.worlddb._
+import models.world._
 import kuzminki.api._
+import kuzminki.column.TypeCol
 
 
 object ArrayRoute extends Routes {
 
   val countryData = Model.get[CountryData]
 
-  implicit val toJsonb: JsValue => Jsonb = obj => Jsonb(Json.stringify(obj))
-
   val routes = Http.collectZIO[Request] {
     
     case Method.GET -> !! / "array" / "langs" / code =>
       sql
         .select(countryData)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.code,
-          t.langs,
+          t.langs
         ))
         .where(_.code === code.toUpperCase)
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
 
-    case req @ Method.PATCH -> !! / "array" / "add" / "lang"  => withBody(req) { obj =>
-      val code = (obj \ "code").as[String]
-      val lang = (obj \ "lang").as[String]
-
+    case req @ Method.PATCH -> !! / "array" / "add" / "lang"  => withParams(req) { m =>
       sql
         .update(countryData)
-        .set(_.langs += lang)
-        .where(_.code === code)
-        .returningNamed(t => Seq(
+        .set(_.langs addAsc m("lang"))
+        .where(_.code === m("code"))
+        .returningJson(t => Seq(
           t.code,
-          t.langs,
+          t.langs
         ))
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
     }
 
-    case req @ Method.PATCH -> !! / "array" / "del" / "lang"  => withBody(req) { obj =>
-      val code = (obj \ "code").as[String]
-      val lang = (obj \ "lang").as[String]
-
+    case req @ Method.PATCH -> !! / "array" / "del" / "lang"  => withParams(req) { m =>
       sql
         .update(countryData)
-        .set(_.langs -= lang)
-        .where(_.code === code)
-        .returningNamed(t => Seq(
+        .set(_.langs -= m("lang"))
+        .where(_.code === m("code"))
+        .returningJson(t => Seq(
           t.code,
-          t.langs,
+          t.langs
         ))
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
     }
   }

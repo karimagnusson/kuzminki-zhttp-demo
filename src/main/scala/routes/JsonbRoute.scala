@@ -2,8 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import play.api.libs.json._
-import models.worlddb._
+import models.world._
 import kuzminki.api._
 import kuzminki.fn._
 import kuzminki.column.TypeCol
@@ -13,92 +12,79 @@ object JsonbRoute extends Routes {
 
   val countryData = Model.get[CountryData]
 
-  implicit val toJsonb: JsValue => Jsonb = obj => Jsonb(Json.stringify(obj))
-
-  implicit class StringAsInt(col: TypeCol[String]) {
-    def asInt = Cast.asInt(col)
-  }
-
   val routes = Http.collectZIO[Request] {
     
     case Method.GET -> !! / "jsonb" / "country" / code =>
       sql
         .select(countryData)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.id,
           t.code,
           t.langs,
           t.data
         ))
         .where(_.code === code.toUpperCase)
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
 
     case Method.GET -> !! / "jsonb" / "capital" / name  =>
       sql
         .select(countryData)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.id,
           t.code,
           t.langs,
-          t.data - "cities"
+          (t.data || t.cities).as("data")
         ))
         .where(_.data -> "capital" ->> "name" === name)
-        .runHeadOptAs[JsValue]
+        .runHeadOpt
         .map(jsonOpt(_))
 
     case Method.GET -> !! / "jsonb" / "city" / "population"  =>
       sql
         .select(countryData)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.id,
           t.code,
-          t.data ->> "name",
-          t.data -> "cities" -> 0
+          (t.data ->> "name").as("name"),
+          (t.cities -> "cities" -> 0).as("largest_city")
         ))
-        .where(t => (t.data -> "cities" -> 0 ->> "population").isNotNull)
-        .orderBy(t => (t.data -> "cities" -> 0 ->> "population").asInt.desc)
+        .where(t => (t.cities -> "cities" -> 0 ->> "population").isNotNull)
+        .orderBy(t => (t.cities -> "cities" -> 0 ->> "population").asInt.desc)
         .limit(5)
-        .runAs[JsValue]
+        .run
         .map(jsonList)
 
     case Method.GET -> !! / "jsonb" / "capital-avg" / cont  =>
       sql
         .select(countryData)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           Agg.avg((t.data #>> Seq("capital", "population")).asInt)
         ))
         .where(t => Seq(
           (t.data #>> Seq("capital", "population")).isNotNull,
           t.data ->> "continent" === cont
         ))
-        .runHeadAs[JsValue]
+        .runHead
         .map(jsonObj)
 
-    case req @ Method.PATCH -> !! / "jsonb" / "add" / "phone"  => withBody(req) { obj =>
-      
-      val code = (obj \ "code").as[String]
-      val phone = (obj \ "phone").as[String]
-
+    case req @ Method.PATCH -> !! / "jsonb" / "add" / "phone"  => withParams(req) { m =>
       sql
         .update(countryData)
-        .set(_.data += Json.obj("phone" -> phone))
-        .where(_.code === code)
-        .returning1(_.data - "cities")
-        .runHeadOptAs[JsValue]
+        .set(_.data += Jsonb("""{"phone": "%s"}""".format(m("phone"))))
+        .where(_.code === m("code"))
+        .returning1(_.data)
+        .runHeadOpt
         .map(jsonOpt(_))
     }
 
-    case req @ Method.PATCH -> !! / "jsonb" / "del" / "phone"  => withBody(req) { obj =>
-      
-      val code = (obj \ "code").as[String]
-
+    case req @ Method.PATCH -> !! / "jsonb" / "del" / "phone"  => withParams(req) { m =>
       sql
         .update(countryData)
         .set(_.data -= "phone")
-        .where(_.code === code)
-        .returning1(_.data - "cities")
-        .runHeadOptAs[JsValue]
+        .where(_.code === m("code"))
+        .returning1(_.data)
+        .runHeadOpt
         .map(jsonOpt(_))
     }
   }

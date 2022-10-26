@@ -3,9 +3,7 @@ package routes
 import zio._
 import zio.stream.ZStream
 import zhttp.http._
-import play.api.libs.json._
-import models.worlddb._
-import models.PlayJsonLoader
+import models.world._
 import kuzminki.api.Jsonb
 
 
@@ -19,10 +17,10 @@ object Routes {
                        ArrayRoute.routes
 
   val app = (routes).catchAll { ex =>
-    println(ex.getClass.getName)
+    //println(ex.getClass.getName)
     Http.apply(
       Response.json(
-        Json.obj("error" -> ex.getMessage).toString
+        """{"error": "%s"}""".format(ex.getMessage)
       )
     )
   }
@@ -31,36 +29,38 @@ object Routes {
 
 trait Routes {
 
-  implicit val loadJsonb: Jsonb => JsValue = jsonb => Json.parse(jsonb.value)
-
-  implicit val loadJson: Seq[Tuple2[String, Any]] => JsValue = { data =>
-    PlayJsonLoader.load(data)
+  def stringToMap(body: String) = ZIO.attempt {
+    body
+      .split("&")
+      .map(_.split("="))
+      .map(p => (p(0), p(1)))
+      .toMap
   }
 
-  def withBody[R](req: Request)(fn: JsValue => RIO[R, Response]): RIO[R, Response] = {
+  def withParams[R](req: Request)(fn: Map[String, String] => RIO[R, Response]): RIO[R, Response] = {
     for {
-      body <- req.body.asString
-      obj  <- ZIO.attempt(Json.parse(body))
-      rsp  <- fn(obj)
+      body    <- req.body.asString
+      params  <- stringToMap(body)
+      rsp     <- fn(params)
     } yield rsp
   }
   
-  val notFound = Json.stringify(Json.obj("message" -> "not found"))
+  val notFound = """{"message": "not found"}"""
 
-  val jsonObj: JsValue => Response = { obj =>
-    Response.json(Json.stringify(obj))
+  val jsonObj: Jsonb => Response = { obj =>
+    Response.json(obj.value)
   }
 
-  val jsonOpt: Option[JsValue] => Response = {
-    case Some(obj) => Response.json(Json.stringify(obj))
+  val jsonOpt: Option[Jsonb] => Response = {
+    case Some(obj) => Response.json(obj.value)
     case None => Response.json(notFound)
   }
 
-  val jsonList: List[JsValue] => Response = { list =>
-    Response.json(Json.stringify(JsArray(list)))
+  val jsonList: List[Jsonb] => Response = { list =>
+    Response.json("[%s]".format(list.map(_.value).mkString(",")))
   }
 
-  val jsonOk: Unit => Response = _ => jsonObj(Json.obj("ok" -> true))
+  val jsonOk: Unit => Response = _ => jsonObj(Jsonb("""{"ok": true}"""))
 }
 
 

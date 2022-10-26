@@ -2,8 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import play.api.libs.json._
-import models.worlddb._
+import models.world._
 import kuzminki.api._
 import kuzminki.fn._
 
@@ -12,34 +11,27 @@ object SelectRoute extends Routes {
 
   val city = Model.get[City]
   val country = Model.get[Country]
+  val lang = Model.get[Lang]
 
   val routes = Http.collectZIO[Request] {
 
     case Method.GET -> !! / "select" / "country" / code =>
       sql
         .select(country)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.code,
           t.name,
           t.continent,
           t.region
         ))
         .where(_.code === code.toUpperCase)
-        .runHeadOptAs[JsValue]
-        .map(jsonOpt(_))
-    
-    case Method.GET -> !! / "select" / "country-type" / code =>
-      sql
-        .select(country)
-        .colsType(_.slim)
-        .where(_.code === code.toUpperCase)
-        .runHeadOptAs(Json.toJson(_))
+        .runHeadOpt
         .map(jsonOpt(_))
 
     case Method.GET -> !! / "select" / "cities" / code =>
       sql
         .select(city, country)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.a.countryCode,
           t.a.population,
           "city_name" -> t.a.name,
@@ -51,8 +43,60 @@ object SelectRoute extends Routes {
         .where(_.b.code === code.toUpperCase)
         .orderBy(_.a.population.desc)
         .limit(5)
-        .runAs[JsValue]
+        .run
         .map(jsonList(_))
+
+    case Method.GET -> !! / "select" / "language" / code  =>
+      sql
+        .select(country)
+        .colsJson(t => Seq(
+          t.code,
+          t.name,
+          sql
+            .select(lang)
+            .colsJson(s => Seq(
+              s.language,
+              s.percentage
+            ))
+            .where(s => Seq(
+              s.countryCode <=> t.code,
+              s.isOfficial === true
+            ))
+            .limit(1)
+            .asColumn
+            .first
+            .as("language")
+        ))
+        .where(_.code === code.toUpperCase)
+        .runHeadOpt
+        .map(jsonOpt(_))
+
+    case Method.GET -> !! / "select" / "country-cities" / code  =>
+      sql
+        .select(country)
+        .colsJson(t => Seq(
+          t.code,
+          t.name,
+          Fn.json(Seq(
+            t.continent,
+            t.region,
+            t.population
+          )).as("info"),
+          sql
+            .select(city)
+            .colsJson(s => Seq(
+              s.name,
+              s.population
+            ))
+            .where(_.countryCode <=> t.code)
+            .orderBy(_.population.desc)
+            .limit(5)
+            .asColumn
+            .as("cities")
+        ))
+        .where(_.code === code.toUpperCase)
+        .runHeadOpt
+        .map(jsonOpt(_))
 
     case req @ Method.GET -> !! / "select" / "optional" =>
       
@@ -60,7 +104,7 @@ object SelectRoute extends Routes {
       
       sql
         .select(country)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.code,
           t.name,
           t.continent,
@@ -75,13 +119,13 @@ object SelectRoute extends Routes {
         ))
         .orderBy(_.name.asc)
         .limit(10)
-        .runAs[JsValue]
+        .run
         .map(jsonList(_))
 
     case Method.GET -> !! / "select" / "and-or" / cont =>
       sql
         .select(country)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           t.code,
           t.name,
           t.continent,
@@ -104,22 +148,25 @@ object SelectRoute extends Routes {
             )
           )
         ))
-        .orderBy(_.name.asc)
+        .orderBy(t => Seq(
+          t.population.desc,
+          t.lifeExpectancy.desc
+        ))
         .limit(10)
-        .runAs[JsValue]
+        .run
         .map(jsonList(_))
 
     case Method.GET -> !! / "select" / "population" / cont =>
       sql
         .select(country)
-        .colsNamed(t => Seq(
+        .colsJson(t => Seq(
           "count" -> Count.all,
           "avg" -> Agg.avg(t.population),
           "max" -> Agg.max(t.population),
           "min" -> Agg.min(t.population)
         ))
         .where(_.continent === cont)
-        .runHeadAs[JsValue]
+        .runHead
         .map(jsonObj(_))
         
   }
