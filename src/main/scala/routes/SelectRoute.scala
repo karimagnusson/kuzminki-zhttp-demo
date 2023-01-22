@@ -2,7 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import models.world._
+import models._
 import kuzminki.api._
 import kuzminki.fn._
 
@@ -11,7 +11,7 @@ object SelectRoute extends Routes {
 
   val city = Model.get[City]
   val country = Model.get[Country]
-  val lang = Model.get[Lang]
+  val language = Model.get[Language]
 
   val routes = Http.collectZIO[Request] {
 
@@ -32,14 +32,14 @@ object SelectRoute extends Routes {
       sql
         .select(city, country)
         .colsJson(t => Seq(
-          t.a.countryCode,
+          t.a.code,
           t.a.population,
           "city_name" -> t.a.name,
           "country_name" -> t.b.name,
           t.b.continent,
           t.b.region
         ))
-        .joinOn(_.countryCode, _.code)
+        .joinOn(_.code, _.code)
         .where(_.b.code === code.toUpperCase)
         .orderBy(_.a.population.desc)
         .limit(5)
@@ -53,13 +53,13 @@ object SelectRoute extends Routes {
           t.code,
           t.name,
           sql
-            .select(lang)
+            .select(language)
             .colsJson(s => Seq(
-              s.language,
+              s.name,
               s.percentage
             ))
             .where(s => Seq(
-              s.countryCode <=> t.code,
+              s.code <=> t.code,
               s.isOfficial === true
             ))
             .limit(1)
@@ -88,7 +88,7 @@ object SelectRoute extends Routes {
               s.name,
               s.population
             ))
-            .where(_.countryCode <=> t.code)
+            .where(_.code <=> t.code)
             .orderBy(_.population.desc)
             .limit(5)
             .asColumn
@@ -99,9 +99,6 @@ object SelectRoute extends Routes {
         .map(jsonOpt(_))
 
     case req @ Method.GET -> !! / "select" / "optional" =>
-      
-      val params = req.url.queryParams.map(p => p._1 -> p._2(0))
-      
       sql
         .select(country)
         .colsJson(t => Seq(
@@ -112,10 +109,10 @@ object SelectRoute extends Routes {
           t.population
         ))
         .whereOpt(t => Seq(
-          t.continent === params.get("cont"),
-          t.region === params.get("region"),
-          t.population > params.get("pop_gt").map(_.toInt),
-          t.population < params.get("pop_lt").map(_.toInt)
+          t.continent === req.q.get("cont"),
+          t.region === req.q.get("region"),
+          t.population > req.q.get("pop_gt").map(_.toInt),
+          t.population < req.q.get("pop_lt").map(_.toInt)
         ))
         .orderBy(_.name.asc)
         .limit(10)

@@ -4,7 +4,7 @@ import zio._
 import zio.stream.{ZStream, ZPipeline, ZSink}
 import zhttp.http._
 import java.sql.Timestamp
-import models.world._
+import models._
 import kuzminki.api._
 import kuzminki.fn._
 
@@ -18,14 +18,14 @@ object StreamRoute extends Routes {
     Headers.contentDisposition("attachment; filename=coins.csv")
 
   val makeLine: Tuple3[String, String, Timestamp] => String = {
-    case (coin, price, created) =>
-      "%s,%s,%s".format(coin, price, created.toString)
+    case (coin, price, takenAt) =>
+      "%s,%s,%s".format(coin, price, takenAt.toString)
   }
 
   val parseLine: String => Tuple3[String, BigDecimal, Timestamp] = { line =>
     line.split(',') match {
-      case Array(coin, price, created) =>
-        (coin, BigDecimal(price), Timestamp.valueOf(created))
+      case Array(coin, price, takenAt) =>
+        (coin, BigDecimal(price), Timestamp.valueOf(takenAt))
       case _ =>
         throw new Exception("invalid file")
     }
@@ -36,7 +36,7 @@ object StreamRoute extends Routes {
     .cols3(t => (
       t.coin,
       t.price,
-      t.created
+      t.stime
     ))
     .cache
   
@@ -49,10 +49,10 @@ object StreamRoute extends Routes {
           .cols3(t => (
             t.coin,
             Fn.roundStr(t.price, 2),
-            t.created
+            t.stime
           ))
           .where(_.coin === coin.toUpperCase)
-          .orderBy(_.created.asc)
+          .orderBy(_.stime.asc)
           .streamBatch(500)
           .map(makeLine)
           .intersperse("\n")

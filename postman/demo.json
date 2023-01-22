@@ -172,13 +172,19 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"city_id\": 1466,\n\t\"price\": 1000\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "city_id",
+							"value": "1466",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1000",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/insert/trip",
@@ -201,13 +207,19 @@
 				"method": "PATCH",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 6,\n\t\"price\": 1500\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1500",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/update/trip",
@@ -230,13 +242,14 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\"id\": 6}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "6",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/delete/trip",
@@ -329,13 +342,19 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"city_id\": 1466,\n\t\"price\": 1000\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "city_id",
+							"value": "1466",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1000",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/cache/insert/trip",
@@ -366,13 +385,19 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 7,\n\t\"price\": 1500\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1500",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/cache/update/trip",
@@ -396,13 +421,14 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\"id\": 7}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "7",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/cache/delete/trip",
@@ -426,7 +452,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/stream/export/btcusdt",
+					"raw": "http://localhost:9000/stream/export/ethusdt",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -435,7 +461,7 @@
 					"path": [
 						"stream",
 						"export",
-						"btcusdt"
+						"ethusdt"
 					]
 				}
 			},
@@ -557,13 +583,19 @@
 				"method": "PATCH",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"phone\": \"+91\",\n    \"code\": \"IND\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "phone",
+							"value": "+91",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "IND",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/jsonb/add/phone",
@@ -587,13 +619,14 @@
 				"method": "PATCH",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"code\": \"IND\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "code",
+							"value": "IND",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:9000/jsonb/del/phone",
@@ -606,6 +639,93 @@
 						"jsonb",
 						"del",
 						"phone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/btc/hour",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/btc/hour?year=2020&doy=125",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"btc",
+						"hour"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2020"
+						},
+						{
+							"key": "doy",
+							"value": "125"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/btc/quarter/avg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/btc/quarter/avg?year=2018&quarter=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"btc",
+						"quarter",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2018"
+						},
+						{
+							"key": "quarter",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/btc/break",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/btc/break?price=45000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"btc",
+						"break"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "45000"
+						}
 					]
 				}
 			},

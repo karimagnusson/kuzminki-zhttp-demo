@@ -15,6 +15,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       //"org.scala-lang" % "scala-reflect" % "2.13.8",
       //"org.postgresql" % "postgresql" % "42.2.24",
+      "com.typesafe" % "config" % "1.4.1",
       "dev.zio" %% "zio" % "2.0.0",
       "io.d11" %% "zhttp" % "2.0.0-RC11",
       "io.github.karimagnusson" % "kuzminki-zio-2" % "0.9.4-RC4",

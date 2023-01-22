@@ -2,7 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import models.world._
+import models._
 import kuzminki.api._
 import kuzminki.column.TypeCol
 

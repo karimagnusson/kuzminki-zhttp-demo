@@ -2,7 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import models.world._
+import models._
 import kuzminki.api._
 import kuzminki.fn._
 import kuzminki.column.TypeCol
@@ -18,7 +18,7 @@ object JsonbRoute extends Routes {
       sql
         .select(countryData)
         .colsJson(t => Seq(
-          t.id,
+          t.uid,
           t.code,
           t.langs,
           t.data
@@ -31,7 +31,7 @@ object JsonbRoute extends Routes {
       sql
         .select(countryData)
         .colsJson(t => Seq(
-          t.id,
+          t.uid,
           t.code,
           t.langs,
           (t.data || t.cities).as("data")
@@ -44,7 +44,7 @@ object JsonbRoute extends Routes {
       sql
         .select(countryData)
         .colsJson(t => Seq(
-          t.id,
+          t.uid,
           t.code,
           (t.data ->> "name").as("name"),
           (t.cities -> "cities" -> 0).as("largest_city")

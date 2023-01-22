@@ -1,10 +1,14 @@
 package routes
 
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 import zio._
 import zio.stream.ZStream
 import zhttp.http._
-import models.world._
+import models.Query
 import kuzminki.api.Jsonb
+
+import java.io.{PrintWriter, CharArrayWriter}
 
 
 object Routes {
@@ -14,10 +18,10 @@ object Routes {
                        CacheRoute.routes ++
                        StreamRoute.routes ++
                        JsonbRoute.routes ++
-                       ArrayRoute.routes
+                       ArrayRoute.routes ++
+                       DateRoute.routes
 
   val app = (routes).catchAll { ex =>
-    //println(ex.getClass.getName)
     Http.apply(
       Response.json(
         """{"error": "%s"}""".format(ex.getMessage)
@@ -29,18 +33,14 @@ object Routes {
 
 trait Routes {
 
-  def stringToMap(body: String) = ZIO.attempt {
-    body
-      .split("&")
-      .map(_.split("="))
-      .map(p => (p(0), p(1)))
-      .toMap
+  implicit class QueryParams(req: Request) {
+    lazy val q = req.url.queryParams.map(p => p._1 -> p._2(0))
   }
 
   def withParams[R](req: Request)(fn: Map[String, String] => RIO[R, Response]): RIO[R, Response] = {
     for {
       body    <- req.body.asString
-      params  <- stringToMap(body)
+      params  <- Query.fromBody(body)
       rsp     <- fn(params)
     } yield rsp
   }

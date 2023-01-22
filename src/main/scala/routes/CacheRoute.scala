@@ -2,7 +2,7 @@ package routes
 
 import zio._
 import zhttp.http._
-import models.world._
+import models._
 import kuzminki.api._
 
 
@@ -27,7 +27,7 @@ object CacheRoute extends Routes {
   val selectJoinStm = sql
     .select(city, country)
     .colsJson(t => Seq(
-      t.a.countryCode,
+      t.a.code,
       t.a.population,
       "city_name" -> t.a.name,
       "country_name" -> t.b.name,
@@ -35,7 +35,7 @@ object CacheRoute extends Routes {
       t.b.continent,
       t.b.region
     ))
-    .joinOn(_.countryCode, _.code)
+    .joinOn(_.code, _.code)
     .where(t => Seq(
       t.b.continent === "Asia",
       t.b.gnp.isNotNull
@@ -83,7 +83,6 @@ object CacheRoute extends Routes {
     .cache
 
   val routes = Http.collectZIO[Request] {
-
 
     case Method.GET -> !! / "cache" / "select" / "country" / code =>
       selectCountryStm
