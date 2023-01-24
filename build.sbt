@@ -13,8 +13,6 @@ lazy val root = (project in file("."))
   .settings(
     name := "kuzminki-zio",
     libraryDependencies ++= Seq(
-      //"org.scala-lang" % "scala-reflect" % "2.13.8",
-      //"org.postgresql" % "postgresql" % "42.2.24",
       "com.typesafe" % "config" % "1.4.1",
       "dev.zio" %% "zio" % "2.0.0",
       "io.d11" %% "zhttp" % "2.0.0-RC11",
@@ -22,3 +20,7 @@ lazy val root = (project in file("."))
     )
   )
 
+// If you build for other Scala versions than 2.13,
+// add these to library dependencies.
+// "org.scala-lang" % "scala-reflect" % "2.13.8",
+// "org.postgresql" % "postgresql" % "42.2.24",

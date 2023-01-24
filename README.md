@@ -10,9 +10,10 @@ This demo does not use any JSON library, instead the database returns the rows a
 Examples:
 - Select, insert, update, delete
 - Cached queries
+- Streaming
 - Jsonb field
 - Array field
-- Streaming
+- Timestamp methods
 
 #### Database
 
