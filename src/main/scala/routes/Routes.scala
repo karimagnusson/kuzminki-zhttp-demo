@@ -4,7 +4,7 @@ import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 import zio._
 import zio.stream.ZStream
-import zhttp.http._
+import zio.http._
 import models.Query
 import kuzminki.api.Jsonb
 
@@ -21,11 +21,9 @@ object Routes {
                        ArrayRoute.routes ++
                        DateRoute.routes
 
-  val app = (routes).catchAll { ex =>
-    Http.apply(
-      Response.json(
-        """{"error": "%s"}""".format(ex.getMessage)
-      )
+  val app = (routes).mapError { ex =>
+    Response.json(
+      """{"error": "%s"}""".format(ex.getMessage)
     )
   }
 }
@@ -33,14 +31,17 @@ object Routes {
 
 trait Routes {
 
-  implicit class QueryParams(req: Request) {
-    lazy val q = req.url.queryParams.map(p => p._1 -> p._2(0))
+  implicit class QueryParamsMap(req: Request) {
+    val q = req.url.queryParams.map.map(p => p._1 -> p._2(0))
+  }
+
+  val bodyMap: Form => Map[String, String] = { form =>
+    form.formData.map(f => f.name -> f.valueAsString.get).toMap
   }
 
   def withParams[R](req: Request)(fn: Map[String, String] => RIO[R, Response]): RIO[R, Response] = {
     for {
-      body    <- req.body.asString
-      params  <- Query.fromBody(body)
+      params  <- req.body.asURLEncodedForm.map(bodyMap)
       rsp     <- fn(params)
     } yield rsp
   }

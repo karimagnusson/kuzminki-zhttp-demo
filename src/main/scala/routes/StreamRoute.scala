@@ -2,7 +2,8 @@ package routes
 
 import zio._
 import zio.stream.{ZStream, ZPipeline, ZSink}
-import zhttp.http._
+import zio.http._
+import zio.http.Response
 import java.sql.Timestamp
 import models._
 import kuzminki.api._
@@ -13,9 +14,10 @@ object StreamRoute extends Routes {
 
   val coinPrice = Model.get[CoinPrice]
 
-  val headers =
-    Headers.contentType("text/csv") ++
-    Headers.contentDisposition("attachment; filename=coins.csv")
+  val headers = Headers(
+    Header.ContentType(MediaType.text.csv),
+    Header.ContentDisposition.Attachment(Some("coins.csv"))
+  )
 
   val makeLine: Tuple3[String, String, Timestamp] => String = {
     case (coin, price, takenAt) =>
@@ -40,10 +42,10 @@ object StreamRoute extends Routes {
     ))
     .cache
   
-  val routes = Http.collectHttp[Request] {
+  val routes = Http.collectHandler[Request] {
     
     case Method.GET -> !! / "stream" / "export" / coin =>
-      Http.fromStream(
+      Handler.fromStream(
         sql
           .select(coinPrice)
           .cols3(t => (
@@ -61,7 +63,7 @@ object StreamRoute extends Routes {
     // file: /csv/eth-price.csv
 
     case req @ Method.POST -> !! / "stream" / "import" =>
-      Http.fromZIO(
+      Handler.fromZIO(
         req
           .body
           .asStream
@@ -73,3 +75,16 @@ object StreamRoute extends Routes {
       )
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

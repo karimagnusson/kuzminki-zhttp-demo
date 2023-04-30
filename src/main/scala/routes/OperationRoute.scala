@@ -1,7 +1,7 @@
 package routes
 
 import zio._
-import zhttp.http._
+import zio.http._
 import models._
 import kuzminki.api._
 
