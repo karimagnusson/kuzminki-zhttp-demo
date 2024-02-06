@@ -1,4 +1,4 @@
-scalaVersion := "2.13.8"
+scalaVersion := "2.13.12"
 
 name := "kuzminki-zhttp-demo"
 
@@ -16,11 +16,7 @@ lazy val root = (project in file("."))
       "com.typesafe" % "config" % "1.4.1",
       "dev.zio" %% "zio" % "2.0.12",
       "dev.zio" %% "zio-http" % "3.0.0-RC1",
-      "io.github.karimagnusson" % "kuzminki-zio-2" % "0.9.4-RC4",
+      "io.github.karimagnusson" %% "kuzminki-zio-2" % "0.9.5-RC2",
     )
   )
 
-// If you build for other Scala versions than 2.13,
-// add these to library dependencies.
-// "org.scala-lang" % "scala-reflect" % "2.13.8",
-// "org.postgresql" % "postgresql" % "42.2.24",
