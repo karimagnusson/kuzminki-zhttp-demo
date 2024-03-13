@@ -6,8 +6,9 @@ import models._
 import kuzminki.api._
 import kuzminki.fn._
 
+// Examples of working with timestamp field.
 
-object DateRoute extends Routes {
+object DateRoute extends Responses {
 
   val btcPrice = Model.get[BtcPrice]
 
@@ -21,13 +22,13 @@ object DateRoute extends Routes {
           t.low.round(2),
           t.open.round(2),
           t.close.round(2),
-          t.stime.format("DD Mon YYYY HH24:MI")
+          t.created.format("DD Mon YYYY HH24:MI")
         ))
         .where(t => Seq(
-          t.stime.year === req.q("year").toInt,
-          t.stime.doy === req.q("doy").toInt
+          t.created.year === req.q("year").toInt, // pick year from timestamp
+          t.created.doy === req.q("doy").toInt    // pick day of year from timestamp
         ))
-        .orderBy(_.stime.asc)
+        .orderBy(_.created.asc)
         .run
         .map(jsonList(_))
 
@@ -40,8 +41,8 @@ object DateRoute extends Routes {
           "min" -> Agg.min(t.close).round(2)
         ))
         .where(t => Seq(
-          t.stime.year === req.q("year").toInt,
-          t.stime.quarter === req.q("quarter").toInt
+          t.created.year === req.q("year").toInt,
+          t.created.quarter === req.q("quarter").toInt
         ))
         .runHead
         .map(jsonObj(_))
@@ -51,10 +52,10 @@ object DateRoute extends Routes {
         .select(btcPrice)
         .colsJson(t => Seq(
           "price" -> t.high.round(2),
-          "year" -> t.stime.year,
-          "quarter" -> t.stime.quarter,
-          "week" -> t.stime.week,
-          "date" -> t.stime.format("DD Mon YYYY HH24:MI")
+          "year" -> t.created.year,
+          "quarter" -> t.created.quarter,
+          "week" -> t.created.week,
+          "date" -> t.created.format("DD Mon YYYY HH24:MI")
         ))
         .where(_.high >= BigDecimal(req.q("price")))
         .orderBy(_.high.asc)

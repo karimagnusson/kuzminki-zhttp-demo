@@ -6,8 +6,9 @@ import models._
 import kuzminki.api._
 import kuzminki.fn._
 
+// Examples of SELECT.
 
-object SelectRoute extends Routes {
+object SelectRoute extends Responses {
 
   val city = Model.get[City]
   val country = Model.get[Country]
@@ -34,8 +35,8 @@ object SelectRoute extends Routes {
         .colsJson(t => Seq(
           t.a.code,
           t.a.population,
-          "city_name" -> t.a.name,
-          "country_name" -> t.b.name,
+          "city_name" -> t.a.name,    // use column name
+          "country_name" -> t.b.name, // define the name
           t.b.continent,
           t.b.region
         ))
@@ -52,7 +53,7 @@ object SelectRoute extends Routes {
         .colsJson(t => Seq(
           t.code,
           t.name,
-          sql
+          sql  // subquery as a nested object
             .select(language)
             .colsJson(s => Seq(
               s.name,
@@ -77,12 +78,12 @@ object SelectRoute extends Routes {
         .colsJson(t => Seq(
           t.code,
           t.name,
-          Fn.json(Seq(
+          Fn.json(Seq(  // put some columns in a nested object
             t.continent,
             t.region,
             t.population
           )).as("info"),
-          sql
+          sql           // subquery as a array of objects
             .select(city)
             .colsJson(s => Seq(
               s.name,

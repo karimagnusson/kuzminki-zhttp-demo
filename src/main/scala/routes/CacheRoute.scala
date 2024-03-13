@@ -5,8 +5,9 @@ import zio.http._
 import models._
 import kuzminki.api._
 
+// Cached queries
 
-object CacheRoute extends Routes {
+object CacheRoute extends Responses {
 
   val trip = Model.get[Trip]
   val city = Model.get[City]

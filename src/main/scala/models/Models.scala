@@ -60,10 +60,19 @@ package object models {
     val uid = column[Long]("uid")
     val coin = column[String]("coin")
     val price = column[BigDecimal]("price")
-    val stime = column[Timestamp]("stime")
+    val created = column[Timestamp]("created")
   }
 
   Model.register[CoinPrice]
+
+  class TempCoinPrice extends Model("temp_coin_price") {
+    val uid = column[UUID]("uid")
+    val coin = column[String]("coin")
+    val price = column[BigDecimal]("price")
+    val created = column[Timestamp]("created")
+  }
+
+  Model.register[TempCoinPrice]
 
   class BtcPrice extends Model("btc_price") {
     val uid = column[Long]("uid")
@@ -74,7 +83,7 @@ package object models {
     val low = column[BigDecimal]("low")
     val volBtc = column[BigDecimal]("vol_btc")
     val volUsd = column[BigDecimal]("vol_usd")
-    val stime = column[Timestamp]("stime")
+    val created = column[Timestamp]("created")
   }
 
   Model.register[BtcPrice]

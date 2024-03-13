@@ -7,8 +7,9 @@ import kuzminki.api._
 import kuzminki.fn._
 import kuzminki.column.TypeCol
 
+// Examples for jsonb field.
 
-object JsonbRoute extends Routes {
+object JsonbRoute extends Responses {
 
   val countryData = Model.get[CountryData]
 
@@ -20,8 +21,8 @@ object JsonbRoute extends Routes {
         .colsJson(t => Seq(
           t.uid,
           t.code,
-          t.langs,
-          t.data
+          t.langs, // array field
+          t.data   // jsonb field
         ))
         .where(_.code === code.toUpperCase)
         .runHeadOpt
@@ -34,7 +35,7 @@ object JsonbRoute extends Routes {
           t.uid,
           t.code,
           t.langs,
-          (t.data || t.cities).as("data")
+          (t.data || t.cities).as("data") // add cities to data
         ))
         .where(_.data -> "capital" ->> "name" === name)
         .runHeadOpt
@@ -71,7 +72,7 @@ object JsonbRoute extends Routes {
     case req @ Method.PATCH -> !! / "jsonb" / "add" / "phone"  => withParams(req) { m =>
       sql
         .update(countryData)
-        .set(_.data += Jsonb("""{"phone": "%s"}""".format(m("phone"))))
+        .set(_.data += Jsonb("""{"phone": "%s"}""".format(m("phone")))) // add "phone" to object
         .where(_.code === m("code"))
         .returning1(_.data)
         .runHeadOpt
@@ -81,7 +82,7 @@ object JsonbRoute extends Routes {
     case req @ Method.PATCH -> !! / "jsonb" / "del" / "phone"  => withParams(req) { m =>
       sql
         .update(countryData)
-        .set(_.data -= "phone")
+        .set(_.data -= "phone") // remove "phone" from the object
         .where(_.code === m("code"))
         .returning1(_.data)
         .runHeadOpt

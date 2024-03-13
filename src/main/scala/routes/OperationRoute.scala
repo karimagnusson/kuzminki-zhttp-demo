@@ -5,8 +5,9 @@ import zio.http._
 import models._
 import kuzminki.api._
 
+// INSERT, UPDATE, DELETE
 
-object OperationRoute extends Routes {
+object OperationRoute extends Responses {
 
   val trip = Model.get[Trip]
   val city = Model.get[City]

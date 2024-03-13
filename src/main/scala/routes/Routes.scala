@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets
 import zio._
 import zio.stream.ZStream
 import zio.http._
-import models.Query
 import kuzminki.api.Jsonb
 
 import java.io.{PrintWriter, CharArrayWriter}
@@ -19,7 +18,8 @@ object Routes {
                        StreamRoute.routes ++
                        JsonbRoute.routes ++
                        ArrayRoute.routes ++
-                       DateRoute.routes
+                       DateRoute.routes ++
+                       TypeRoute.routes
 
   val app = (routes).mapError { ex =>
     Response.json(
@@ -29,7 +29,7 @@ object Routes {
 }
 
 
-trait Routes {
+trait Responses {
 
   implicit class QueryParamsMap(req: Request) {
     val q = req.url.queryParams.map.map(p => p._1 -> p._2(0))
@@ -45,8 +45,16 @@ trait Routes {
       rsp     <- fn(params)
     } yield rsp
   }
+
+  def withJsonBody[R](req: Request)(fn: String => RIO[R, Response]): RIO[R, Response] = {
+    for {
+      params  <- req.body.asString
+      rsp     <- fn(params)
+    } yield rsp
+  }
   
   val notFound = """{"message": "not found"}"""
+  val okTrue = """{"ok": true}"""
 
   val jsonObj: Jsonb => Response = { obj =>
     Response.json(obj.value)
@@ -61,7 +69,7 @@ trait Routes {
     Response.json("[%s]".format(list.map(_.value).mkString(",")))
   }
 
-  val jsonOk: Unit => Response = _ => jsonObj(Jsonb("""{"ok": true}"""))
+  val jsonOk: Unit => Response = _ => jsonObj(Jsonb(okTrue))
 }
 
 

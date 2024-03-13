@@ -6,7 +6,7 @@
 
 kuzminki-zhttp-demo is an example REST API using [kuzminki-zio-2](https://github.com/karimagnusson/kuzminki-zio-2) and [zio-http](https://github.com/dream11/zio-http).
 
-This demo uses ZIO 2, zio-http 3.0.0-RC1 and kuzminki-zio-2 0.9.5-RC2.
+This demo uses ZIO 2, zio-http 3.0.0-RC1 and kuzminki-zio-2 0.9.5-RC4.
 
 Examples:
 - Select, insert, update, delete
@@ -29,7 +29,7 @@ psql world < db/world.pg
 #### Config
 
 ```sbt
-// src/main/resources.conf
+// src/main/resources/application.conf
 
 db {
   name = "world"

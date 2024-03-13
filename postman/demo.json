@@ -494,6 +494,33 @@
 			"response": []
 		},
 		{
+			"name": "/stream/import/safe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/Users/karimagnusson/Jobs/Kuzminki/Zhttp/kuzminki-zhttp-demo/csv/eth-price.csv"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/stream/import/safe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"stream",
+						"import",
+						"safe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "/jsonb/country/:code",
 			"request": {
 				"method": "GET",
@@ -726,6 +753,58 @@
 							"key": "price",
 							"value": "45000"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/type/select/country/ind",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/type/select/country/ind",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"type",
+						"select",
+						"country",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/type/insert/trip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cityId\": 1450,\n    \"price\": 2000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/type/insert/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"type",
+						"insert",
+						"trip"
 					]
 				}
 			},

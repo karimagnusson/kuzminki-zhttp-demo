@@ -1,5 +1,6 @@
 package routes
 
+import java.util.UUID
 import zio._
 import zio.stream.{ZStream, ZPipeline, ZSink}
 import zio.http._
@@ -9,10 +10,12 @@ import models._
 import kuzminki.api._
 import kuzminki.fn._
 
+// Examples for streaming.
 
-object StreamRoute extends Routes {
+object StreamRoute extends Responses {
 
   val coinPrice = Model.get[CoinPrice]
+  val tempCoinPrice = Model.get[TempCoinPrice]
 
   val headers = Headers(
     Header.ContentType(MediaType.text.csv),
@@ -38,12 +41,14 @@ object StreamRoute extends Routes {
     .cols3(t => (
       t.coin,
       t.price,
-      t.stime
+      t.created
     ))
     .cache
   
   val routes = Http.collectHandler[Request] {
     
+    // Stream data as a csv file
+
     case Method.GET -> !! / "stream" / "export" / coin =>
       Handler.fromStream(
         sql
@@ -51,15 +56,16 @@ object StreamRoute extends Routes {
           .cols3(t => (
             t.coin,
             Fn.roundStr(t.price, 2),
-            t.stime
+            t.created
           ))
           .where(_.coin === coin.toUpperCase)
-          .orderBy(_.stime.asc)
-          .streamBatch(500)
+          .orderBy(_.created.asc)
+          .stream(500)
           .map(makeLine)
           .intersperse("\n")
       ).updateHeaders(_ ++ headers)
 
+    // Stream csv file to the database
     // file: /csv/eth-price.csv
 
     case req @ Method.POST -> !! / "stream" / "import" =>
@@ -70,9 +76,68 @@ object StreamRoute extends Routes {
           .via(ZPipeline.utf8Decode)
           .via(ZPipeline.splitLines)
           .map(parseLine)
-          .run(insertCoinPriceStm.asSink)
+          .transduce(insertCoinPriceStm.collect(500)) // Collect data to a Chunk of 500 rows
+          .run(insertCoinPriceStm.asChunkSink) // Insert 500 rows each time.
           .map(jsonOk)
       )
+
+    // Stream csv file into a temporary table.
+    // If there are no errors, move the data from the temp table to the target table.
+    // Then delete the data from the temp table. 
+
+    case req @ Method.POST -> !! / "stream" / "import" / "safe" =>
+      
+      val uid = UUID.randomUUID
+
+      Handler.fromZIO((for {
+
+        _ <- req // Stream to temp table.
+          .body
+          .asStream
+          .via(ZPipeline.utf8Decode)
+          .via(ZPipeline.splitLines)
+          .map(parseLine)
+          .map {            // Add UUID used by the temp table.
+            case (coin, price, takenAt) =>
+              (uid, coin, price, takenAt)
+          }
+          .run(sql
+            .insert(tempCoinPrice)
+            .cols4(t => (
+              t.uid,
+              t.coin,
+              t.price,
+              t.created
+            ))
+            .cache
+            .asSink
+          )
+
+        _ <- sql  // Move data in one statement using INSERT from SELECT.
+          .insert(coinPrice)
+          .cols3(t => (
+            t.coin,
+            t.price,
+            t.created
+          ))
+          .fromSelect(
+            sql
+              .select(tempCoinPrice)
+              .cols3(t => (
+                t.coin,
+                t.price,
+                t.created
+              ))
+              .where(_.uid === uid)
+          )
+          .run
+
+      } yield Response.json(okTrue)).tapEither { _ =>
+        sql  // Delete from temp table on success or failure.
+          .delete(tempCoinPrice)
+          .where(_.uid === uid)
+          .run
+      })
   }
 }
 
