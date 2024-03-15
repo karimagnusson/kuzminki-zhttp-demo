@@ -49,12 +49,12 @@
 			"response": []
 		},
 		{
-			"name": "/select/language/:code",
+			"name": "/select/lang/:code",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/select/language/FRA",
+					"raw": "http://localhost:9000/select/lang/FRA",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -62,7 +62,7 @@
 					"port": "9000",
 					"path": [
 						"select",
-						"language",
+						"lang",
 						"FRA"
 					]
 				}
@@ -475,7 +475,7 @@
 				"body": {
 					"mode": "file",
 					"file": {
-						"src": "/Users/karimagnusson/Jobs/Kuzminki/kuzminki-zhttp-demo/csv/eth-price.csv"
+						"src": "/Users/karimagnusson/Jobs/Kuzminki/Zhttp/kuzminki-zhttp-demo/csv/eth-price.csv"
 					}
 				},
 				"url": {
@@ -760,9 +760,16 @@
 		},
 		{
 			"name": "/type/select/country/ind",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": {
 					"raw": "http://localhost:9000/type/select/country/ind",
 					"protocol": "http",
@@ -805,6 +812,117 @@
 						"type",
 						"insert",
 						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/type/update/trip",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"price\": 2500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/type/update/trip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"type",
+						"update",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/array/langs/ind",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/array/langs/fra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"array",
+						"langs",
+						"fra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/array/add/lang",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"code\": \"FRA\",\n    \"lang\": \"Hindi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/array/add/lang",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"array",
+						"add",
+						"lang"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/array/del/lang",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"FRA\",\n    \"lang\": \"Hindi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/array/del/lang",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"array",
+						"del",
+						"lang"
 					]
 				}
 			},

@@ -76,8 +76,8 @@ object StreamRoute extends Responses {
           .via(ZPipeline.utf8Decode)
           .via(ZPipeline.splitLines)
           .map(parseLine)
-          .transduce(insertCoinPriceStm.collect(500)) // Collect data to a Chunk of 500 rows
-          .run(insertCoinPriceStm.asChunkSink) // Insert 500 rows each time.
+          .transduce(insertCoinPriceStm.collect(100)) // Collect data to a Chunk of 500 rows
+          .run(insertCoinPriceStm.asChunkSink) // Insert 100 rows each time.
           .map(jsonOk)
       )
 

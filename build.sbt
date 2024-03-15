@@ -2,7 +2,7 @@ scalaVersion := "2.13.12"
 
 name := "kuzminki-zhttp-demo"
 
-version := "0.9.0"
+version := "0.4"
 
 scalacOptions ++= Seq(
   "-deprecation",

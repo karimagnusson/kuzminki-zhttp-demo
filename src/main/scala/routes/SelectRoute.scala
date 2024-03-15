@@ -47,7 +47,7 @@ object SelectRoute extends Responses {
         .run
         .map(jsonList(_))
 
-    case Method.GET -> !! / "select" / "language" / code  =>
+    case Method.GET -> !! / "select" / "lang" / code  =>
       sql
         .select(country)
         .colsJson(t => Seq(
